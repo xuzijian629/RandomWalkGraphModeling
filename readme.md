@@ -3,7 +3,6 @@ Efficiently Vectorize Graphs using Random Walks
 
 ## Prerequisites
 - Python (v3.6 or later)
-- Chainer
 - scikit-learn
 
 ## Generate datasets
