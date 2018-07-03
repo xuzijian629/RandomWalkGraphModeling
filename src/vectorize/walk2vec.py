@@ -38,4 +38,4 @@ def walk2vec(g: Graph, s):
     pmedian = np.eye(g.n)[getMedianNode(g)]
     pmean = np.eye(g.n)[getMeanNode(g)]
     ret = getM(g.A, pmax, s) + getM(g.A, pmin, s) + getM(g.A, pmedian, s) + getM(g.A, pmean, s)
-    return np.array(ret)
+    return ret
