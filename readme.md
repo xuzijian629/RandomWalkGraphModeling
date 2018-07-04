@@ -18,10 +18,10 @@ $ python3 main.py
 ```
 
 ## Sample
-Generate datasets for ER graphs and PC graphs, then classify two.
+Generate datasets for ER graphs and SB graphs, then classify two.
 ```
 $ echo 'er
-pc' | python3 generate.py &&\
+sb' | python3 generate.py &&\
 echo 'er
-pc' | python3 main.py
+sb' | python3 main.py
 ```
