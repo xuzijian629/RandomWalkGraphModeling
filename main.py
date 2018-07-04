@@ -3,21 +3,21 @@ import numpy as np
 import os, random
 
 def main():
-    ER = []
-    SBM = []
-    path = input("Enter filename of ER datasets...\n")
+    A = []
+    B = []
+    path = input("Enter filename of datasets A...\n")
     with open(path) as f:
         for line in f:
-            ER.append((eval(line), -1))
-    path = input("Enter filename of SBM datasets...\n")
+            A.append((eval(line), -1))
+    path = input("Enter filename of datasets B...\n")
     with open(path) as f:
         for line in f:
-            SBM.append((eval(line), 1))
+            B.append((eval(line), 1))
 
-    train = ER[:len(ER) // 2] + SBM[:len(SBM) // 2]
+    train = A[:len(A) // 2] + B[:len(B) // 2]
     random.shuffle(train)
 
-    test = ER[len(ER) // 2:] + SBM[len(SBM) // 2:]
+    test = A[len(A) // 2:] + B[len(B) // 2:]
     model = RandomForestClassifier()
     model.fit([*map(lambda x: x[0], train)], [*map(lambda x: x[1], train)])
 
