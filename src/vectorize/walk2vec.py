@@ -32,7 +32,7 @@ def getM(A, p, s):
     return ret
 
 def walk2vec(g: Graph, s):
-    assert 5 <= s <= 20, "too less or too many random walk steps"
+    assert 3 <= s <= 50, "too less or too many random walk steps"
     pmax = np.eye(g.n)[getMaxNode(g)]
     pmin = np.eye(g.n)[getMinNode(g)]
     pmedian = np.eye(g.n)[getMedianNode(g)]

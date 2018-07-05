@@ -24,4 +24,4 @@ if __name__ == '__main__':
     # sbs = generateSBvs(times, n, delta, s)
     # D, ers, sbs = learnDictionary(D, ers, sbs)
     # generateWalk2vecSC(D, times, n, ers, l)
-    # generateWalk2vecSC(D, times, n, sbs, s)
+    # generateWalk2vecSC(D, times, n, sbs, l)

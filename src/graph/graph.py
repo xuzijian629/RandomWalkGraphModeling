@@ -2,7 +2,7 @@ import numpy as np
 
 class Graph:
     def __init__(self, n):
-        assert 100 <= n <= 1000, "too less or too many nodes to construct a graph"
+        assert 5 <= n <= 2000, "too less or too many nodes to construct a graph"
         self.n = n
         self.A = np.zeros((n, n), dtype=np.int)
     def addEdge(self, i, j):

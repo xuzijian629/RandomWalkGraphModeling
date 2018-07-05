@@ -3,7 +3,7 @@ import numpy as np
 
 class PC(ER):
     def __init__(self, n, beta):
-        assert 1.1 < beta < 2.1, "too small or too large beta"
+        assert 0.5 < beta, "too small beta"
         super().__init__(n, 0.5)
         k = int(np.ceil(beta * np.sqrt(n)))
         for i in range(k):
