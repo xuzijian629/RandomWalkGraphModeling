@@ -15,12 +15,13 @@ beta = 1.8
 atom, l = 100, 0.15
 
 if __name__ == '__main__':
-    # generateERwalk2vec(times, n, 0.5, s)
+    generateERwalk2vec(times, n, 0.5, s)
     # generateSBwalk2vec(times, n, delta, s)
     # generatePCwalk2vec(times, n, beta, s)
-    D = MiniBatchDictionaryLearning(n_components=atom, alpha=l)
-    ers = generateERvs(times, n, 0.5, s)
-    sbs = generateSBvs(times, n, delta, s)
-    D, ers, sbs = learnDictionary(D, ers, sbs)
-    generateWalk2vecSC(D, times, n, ers, l)
-    generateWalk2vecSC(D, times, n, sbs, s)
+    generateHMwalk2vec(times, n, s)
+    # D = MiniBatchDictionaryLearning(n_components=atom, alpha=l)
+    # ers = generateERvs(times, n, 0.5, s)
+    # sbs = generateSBvs(times, n, delta, s)
+    # D, ers, sbs = learnDictionary(D, ers, sbs)
+    # generateWalk2vecSC(D, times, n, ers, l)
+    # generateWalk2vecSC(D, times, n, sbs, s)

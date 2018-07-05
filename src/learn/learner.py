@@ -1,6 +1,7 @@
 from src.graph.er import ER
 from src.graph.sb import SB
 from src.graph.pc import PC
+from src.graph.hm import HM
 from src.graph.utils import isConnected
 from src.vectorize.walk2vec import walk2vec
 from src.vectorize.walk2vecSC import getMs
@@ -41,6 +42,15 @@ def generatePCvs(times, n, beta, s):
             vs += getMs(g, s)
             sys.stdout.write("\rGenerating graphs: {}/{} finished".format(i + 1, times))
             i += 1
+    assert len(vs) == times * n
+    return vs
+
+def generateHMvs(times, n, s):
+    vs = []
+    for i in range(times):
+        g = HM(n)
+        vs += getMs(g, s)
+        sys.stdout.write("\rGenerating graphs: {}/{} finished".format(i + 1, times))
     assert len(vs) == times * n
     return vs
 

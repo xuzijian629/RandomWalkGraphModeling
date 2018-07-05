@@ -1,6 +1,7 @@
 from src.graph.er import ER
 from src.graph.sb import SB
 from src.graph.pc import PC
+from src.graph.hm import HM
 from src.graph.utils import isConnected
 from src.vectorize.walk2vec import walk2vec
 from src.vectorize.walk2vecSC import getMs
@@ -58,6 +59,23 @@ def generatePCwalk2vec(times, n, beta, s):
                     f.write(str(v) + '\n')
                     sys.stdout.write("\r{}/{} finished".format(i + 1, times))
                     i += 1
+        except:
+            os.remove(path)
+            traceback.print_exc()
+            exit(1)
+
+    print("\rData successfully generated")
+
+def generateHMwalk2vec(times, n, s):
+    path = input("Enter filename to save HM datasets...\n")
+    with open(path, 'w') as f:
+        try:
+            for i in range(times):
+                g = HM(n)
+                v = walk2vec(g, s)
+                f.write(str(v) + '\n')
+                sys.stdout.write("\r{}/{} finished".format(i + 1, times))
+
         except:
             os.remove(path)
             traceback.print_exc()
