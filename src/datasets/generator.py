@@ -8,9 +8,48 @@ from src.graph.dhm import DHM
 from src.graph.utils import isConnected
 from src.vectorize.walk2vec import walk2vec
 from src.vectorize.walk2vecSC import getMs
+from src.vectorize.walk2vecJoe import walk2vecJoe
 from sklearn.decomposition import SparseCoder
 import numpy as np
 import os, sys, traceback
+
+def generateERwalk2vecJoe(times, n, p, s):
+    path = input("Enter filename to save ER datasets...\n")
+    with open(path, 'w') as f:
+        try:
+            for i in range(times):
+                g = ER(n, p)
+                j = walk2vecJoe(g, s)
+                j.preprocess()
+                v = j.encode()
+                f.write(str(v) + '\n')
+                sys.stdout.write("\r{}/{} finished".format(i + 1, times))
+
+        except:
+            os.remove(path)
+            traceback.print_exc()
+            exit(1)
+
+    print("\rData successfully generated")
+
+def generatePCwalk2vecJoe(times, n, beta, s):
+    path = input("Enter filename to save PC datasets...\n")
+    with open(path, 'w') as f:
+        try:
+            for i in range(times):
+                g = PC(n, beta)
+                j = walk2vecJoe(g, s)
+                j.preprocess()
+                v = j.encode()
+                f.write(str(v) + '\n')
+                sys.stdout.write("\r{}/{} finished".format(i + 1, times))
+
+        except:
+            os.remove(path)
+            traceback.print_exc()
+            exit(1)
+
+    print("\rData successfully generated")
 
 def generateERwalk2vec(times, n, p, s):
     path = input("Enter filename to save ER datasets...\n")
