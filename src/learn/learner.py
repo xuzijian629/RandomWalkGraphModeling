@@ -2,6 +2,9 @@ from src.graph.er import ER
 from src.graph.sb import SB
 from src.graph.pc import PC
 from src.graph.hm import HM
+from src.graph.der import DER
+from src.graph.dsb import DSB
+from src.graph.dhm import DHM
 from src.graph.utils import isConnected
 from src.vectorize.walk2vec import walk2vec
 from src.vectorize.walk2vecSC import getMs
@@ -21,11 +24,35 @@ def generateERvs(times, n, p, s):
     assert len(vs) == times * n
     return vs
 
+def generateDERvs(times, n, p, s):
+    i = 0
+    vs = []
+    while i < times:
+        g = DER(n, p)
+        if isConnected(g):
+            vs += getMs(g, s)
+            sys.stdout.write("\rGenerating graphs: {}/{} finished".format(i + 1, times))
+            i += 1
+    assert len(vs) == times * n
+    return vs
+
 def generateSBvs(times, n, delta, s):
     i = 0
     vs = []
     while i < times:
         g = SB(n, delta)
+        if isConnected(g):
+            vs += getMs(g, s)
+            sys.stdout.write("\rGenerating graphs: {}/{} finished".format(i + 1, times))
+            i += 1
+    assert len(vs) == times * n
+    return vs
+
+def generateDSBvs(times, n, delta, s):
+    i = 0
+    vs = []
+    while i < times:
+        g = DSB(n, delta)
         if isConnected(g):
             vs += getMs(g, s)
             sys.stdout.write("\rGenerating graphs: {}/{} finished".format(i + 1, times))
@@ -49,6 +76,15 @@ def generateHMvs(times, n, s):
     vs = []
     for i in range(times):
         g = HM(n)
+        vs += getMs(g, s)
+        sys.stdout.write("\rGenerating graphs: {}/{} finished".format(i + 1, times))
+    assert len(vs) == times * n
+    return vs
+
+def generateDHMvs(times, n, s):
+    vs = []
+    for i in range(times):
+        g = DHM(n)
         vs += getMs(g, s)
         sys.stdout.write("\rGenerating graphs: {}/{} finished".format(i + 1, times))
     assert len(vs) == times * n
