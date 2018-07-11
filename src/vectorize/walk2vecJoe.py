@@ -28,14 +28,16 @@ class walk2vecJoe:
                 ret.append(np.linalg.norm(self.IW[t - 1][i] - self.IW[t - 1][j]))
         return np.array(ret)
 
-    def encode(self, bins=50):
-        ret = np.zeros(self.g.n * (self.g.n - 1) // 2)
+    def encode(self):
+        ret = []
         for i in range(self.s):
             v = self.getDistVector(1 + i)
             v, _ = normalizeVector(v)
-            ret += v
-        y, edges = np.histogram(ret, bins=bins)
-        return y.tolist() + edges.tolist()
+            v = sorted(v)
+            for j in range(1, self.g.n):
+                ret.append(v[(j * (j + 1) // 2 - 1) // 2])
+                ret.append(v[self.g.n * (self.g.n - 1) // 2 - 1 - (j * (j + 1) // 2 - 1) // 2])
+        return ret
 
 def normalizeVector(v):
     ave = np.average(v)

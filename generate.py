@@ -2,15 +2,15 @@ from src.datasets.generator import *
 from src.learn.learner import *
 
 # number of datasets
-times = 250
+times = 1000
 # number of nodes
 n = 200
 # number of random walks
-s = 15
+s = 5
 # constant for sB graph
 delta = 0.16
 # constant for PC graph
-beta = 1.8
+beta = 1.5
 # constant for sparse coding
 atom, l = 100, 0.15
 
